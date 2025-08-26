@@ -207,6 +207,30 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "Execute_PL_DF_Case_Deaths_Transform",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "ForEachItem",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "PL_DF_case_deaths_transform",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
 					}
 				],
 				"policy": {
@@ -216,6 +240,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_json_ecdc_path')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_DF_case_deaths_transform')]",
 				"[concat(variables('factoryId'), '/datasets/ds_ecdc_data_http')]",
 				"[concat(variables('factoryId'), '/datasets/ds_ecdc_data_adls')]"
 			]

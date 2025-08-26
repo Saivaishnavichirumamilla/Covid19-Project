@@ -1,0 +1,9 @@
+{
+	"name": "adf-envoy-01",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "48b99ad7-cf76-441e-b840-190e93faa50e",
+		"tenantId": "032ec74b-6969-42e9-b1ab-0e538d03f54f"
+	}
+}

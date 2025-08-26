@@ -512,7 +512,8 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/population/blobs/population_by_age (1).tsv.gz",
+					"blobPathBeginsWith": "/population/blobs/population",
+					"blobPathEndsWith": "csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('trigger_pl_on_file_arrival_properties_typeProperties_scope')]",
 					"events": [

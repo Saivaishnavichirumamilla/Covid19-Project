@@ -513,7 +513,7 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/population/blobs/population",
-					"blobPathEndsWith": "csv",
+					"blobPathEndsWith": "tsv.gz",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('trigger_pl_on_file_arrival_properties_typeProperties_scope')]",
 					"events": [

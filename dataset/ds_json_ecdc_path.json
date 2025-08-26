@@ -1,0 +1,32 @@
+{
+	"name": "ds_json_ecdc_path",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob_population",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "githubusercontent_ecdc_file_list.json",
+				"container": "ecdc-json"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sourceBaseURL": {
+					"type": "string"
+				},
+				"sourceRelativeURL": {
+					"type": "string"
+				},
+				"sinkFileName": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

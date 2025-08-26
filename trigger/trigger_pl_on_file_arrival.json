@@ -14,7 +14,7 @@
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/population/blobs/population",
-			"blobPathEndsWith": "csv",
+			"blobPathEndsWith": "tsv.gz",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/cfe1796e-447a-47d7-8e08-9f70cc90a883/resourceGroups/rg-saivaishnavi/providers/Microsoft.Storage/storageAccounts/blobcontainercovid",
 			"events": [

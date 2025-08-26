@@ -65,13 +65,33 @@
 					},
 					"ls_http_ecdc_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_ecdc_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-envoy-01_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"trigger_pl_on_file_arrival_properties_typeProperties_scope": {
 						"value": "[parameters('trigger_pl_on_file_arrival_properties_typeProperties_scope')]"
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-envoy-01_ArmTemplate_0')]"
+			]
 		}
 	]
 }

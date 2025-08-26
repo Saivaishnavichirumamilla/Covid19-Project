@@ -78,26 +78,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger_pl_on_file_arrival')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/population/blobs/population_by_age (1).tsv.gz",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger_pl_on_file_arrival_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ds_adls_population')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -512,6 +492,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_population')]",
 				"[concat(variables('factoryId'), '/datasets/ds_adls_population')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger_pl_on_file_arrival')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_copy_population",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/population/blobs/population_by_age (1).tsv.gz",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('trigger_pl_on_file_arrival_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_copy_population')]"
 			]
 		}
 	]

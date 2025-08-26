@@ -501,7 +501,15 @@
 			"properties": {
 				"annotations": [],
 				"runtimeState": "Started",
-				"pipelines": [],
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_copy_population",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/population/blobs/population_by_age (1).tsv.gz",
@@ -512,7 +520,9 @@
 					]
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_copy_population')]"
+			]
 		}
 	]
 }

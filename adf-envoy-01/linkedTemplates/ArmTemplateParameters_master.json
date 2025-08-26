@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-envoy-01"
+		},
+		"ls_adls_raw_accountKey": {
+			"value": ""
+		},
+		"ls_blob_population_connectionString": {
+			"value": ""
+		},
+		"ls_adls_raw_properties_typeProperties_url": {
+			"value": "https://adlscontainercovid.dfs.core.windows.net/"
+		},
+		"ls_http_ecdc_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com"
+		},
+		"trigger_pl_on_file_arrival_properties_typeProperties_scope": {
+			"value": "/subscriptions/cfe1796e-447a-47d7-8e08-9f70cc90a883/resourceGroups/rg-saivaishnavi/providers/Microsoft.Storage/storageAccounts/blobcontainercovid"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
